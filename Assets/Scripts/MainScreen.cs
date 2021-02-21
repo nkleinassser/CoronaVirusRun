@@ -6,16 +6,6 @@ using UnityEngine.UI;
 
 public class MainScreen : MonoBehaviour
 {
-    public static void PlayButtonClickedOld() {
-        Text[] textLabels = FindObjectsOfType<Text>();
-
-        foreach (Text textLabel in textLabels) {
-            if (textLabel.name == "MainScreenText") {
-                textLabel.text = "Hello World";
-            }
-        }
-    }
-
     public static bool loadingGame = false;
     public static void PlayButtonClicked() {
         if (loadingGame == false) {
@@ -27,11 +17,7 @@ public class MainScreen : MonoBehaviour
         }
     }
 
-    void Update() {
-        #if !UNITY_EDITOR
-            if (Screen.width < 900 || Screen.height < 350) {
-                Screen.SetResolution(1000, 450, false);
-            }
-        #endif
+    void Start() {
+        GameObject.FindGameObjectWithTag("ScoreLabel").GetComponent<Text>().text = GlobalData.highScore.ToString();
     }
 }

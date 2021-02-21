@@ -9,6 +9,7 @@ public class GlobalData : MonoBehaviour
     ///////////////
 
     public static int highScore = 0;
+    public static int currentScore = 0;
 
     ///////////////
     // Coding Data
