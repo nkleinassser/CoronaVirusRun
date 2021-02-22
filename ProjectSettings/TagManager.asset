@@ -10,6 +10,11 @@ TagManager:
   - EndZone
   - SafeZone
   - ScoreLabel
+  - DefaultParticle
+  - Particle
+  - WarZone
+  - ParticleHolder
+  - Wall
   layers:
   - Default
   - TransparentFX

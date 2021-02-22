@@ -40,6 +40,7 @@
      <Compile Include="Assets\Scripts\MainScreen.cs" />
      <Compile Include="Assets\Scripts\GlobalData.cs" />
      <Compile Include="Assets\Scripts\SceneStartup.cs" />
+     <Compile Include="Assets\Scripts\ParticleHitScript.cs" />
      <None Include="Assets\UnityStoreAssets\Lean\READ ME.txt" />
     <Reference Include="UnityEngine">
         <HintPath>/Applications/Unity/Hub/Editor/2020.2.5f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
@@ -703,13 +704,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="LeanCommon.csproj">
-      <Project>{52f82fd3-57d8-57af-04ba-43ca4147735c}</Project>
-      <Name>LeanCommon</Name>
-    </ProjectReference>
     <ProjectReference Include="LeanTransition.csproj">
       <Project>{cb7c0b40-f313-b097-49ef-fe3edbbdc039}</Project>
       <Name>LeanTransition</Name>
+    </ProjectReference>
+    <ProjectReference Include="LeanCommon.csproj">
+      <Project>{52f82fd3-57d8-57af-04ba-43ca4147735c}</Project>
+      <Name>LeanCommon</Name>
     </ProjectReference>
     <ProjectReference Include="LeanGUI.csproj">
       <Project>{0b61b11e-1c24-edd7-6e15-02def8464050}</Project>

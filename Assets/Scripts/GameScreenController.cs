@@ -37,7 +37,7 @@ public class GameScreenController : MonoBehaviour
                 FindObjectOfType<Text>().text = "Score: " + GlobalData.currentScore.ToString();
                 playerCharacter = null;
                 SceneManager.LoadSceneAsync("GameScreen");
-            } else if (collider.name == "Enemy") {
+            } else if (collider.name == "Enemy" || collider.tag == "Particle") {
                 movingPlayer = true;
                 if (GlobalData.currentScore >= GlobalData.highScore) {
                     GlobalData.highScore = GlobalData.currentScore;
@@ -54,8 +54,48 @@ public class GameScreenController : MonoBehaviour
     }
 
     public static bool alreadyRunning = false;
-    public static float playerSpeed = 250f;
+    public static float playerSpeed = 500f;
     public static double lastRuntime = 0.0;
+    public static int maxParticles = 10;
+    public static int currentParticles = 0;
+    public static double lastParticleCreatedTime = 0.0;
+
+    public static List<GameObject> particlesInExistence = new List<GameObject>();
+
+    public void Start() {
+        particlesInExistence = new List<GameObject>();
+        currentParticles = 0;
+    }
+
+    public static void particleHitWall(GameObject particle, Collider2D collider) {
+        destroyParticle(particle, true);
+    }
+
+    public static void destroyParticle(GameObject particle, bool createNew) {
+        particlesInExistence[particlesInExistence.IndexOf(particle)] = null;
+        Destroy(particle);
+
+        if (createNew == true) {
+            createNewParticle();
+        }
+    }
+
+    public static void createNewParticle() {
+        GameObject newParticle = GameObject.Instantiate(GameObject.FindGameObjectWithTag("DefaultParticle"), GameObject.FindGameObjectWithTag("ParticleHolder").transform);
+        newParticle.tag = "Particle";
+        currentParticles ++;
+        particlesInExistence.Add(newParticle);
+
+        int[] randomNumbers = new int[2]; 
+
+        for (int i = 0; i < 2; i++) {
+            int signController = Random.Range(0, 1) * 2 - 1;
+
+            randomNumbers[i] = Random.Range(150, 250) * signController;
+        }
+
+        newParticle.GetComponent<Rigidbody2D>().AddForce(Random.onUnitSphere * new Vector2(randomNumbers[0], randomNumbers[1]), ForceMode2D.Impulse);
+    }
 
     void FixedUpdate() {
         bool ranFirst = false;
@@ -130,5 +170,10 @@ public class GameScreenController : MonoBehaviour
         }
 
         alreadyRunning = false;
+
+        if (currentParticles < maxParticles && Time.time - lastParticleCreatedTime >= 0.35)  {
+            lastParticleCreatedTime = Time.time;
+            createNewParticle();
+        }
     }
 }

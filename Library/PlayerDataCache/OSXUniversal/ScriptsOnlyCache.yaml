@@ -3,6 +3,7 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - GameScreenController
     - MainScreen
+    - ParticleHitScript
     - SceneStartup
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
@@ -86,9 +87,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3528}
     - Class: 114
-      Script: {instanceID: 4082}
+      Script: {instanceID: 3966}
     - Class: 114
-      Script: {instanceID: 5252}
+      Script: {instanceID: 4084}
+    - Class: 114
+      Script: {instanceID: 5254}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 124
@@ -149,9 +152,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3528}
     - Class: 114
-      Script: {instanceID: 4082}
+      Script: {instanceID: 4084}
     - Class: 114
-      Script: {instanceID: 5252}
+      Script: {instanceID: 5254}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 124
@@ -903,6 +906,12 @@ ScriptsOnlyBuild:
     assemblyName: LeanTransition.dll
     namespaceName: Lean.Transition.Method
     className: LeanCanvasGroupInteractable
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ParticleHitScript
   - hash:
       serializedVersion: 2
       Hash: 0edeba255bdbade25edc357f1412ba38
